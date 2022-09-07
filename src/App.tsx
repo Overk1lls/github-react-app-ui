@@ -1,9 +1,10 @@
-import './App.css';
+import { isSignedIn } from './app/auth';
+import { Navigate } from 'react-router-dom';
 
-function App() {
+export default function App() {
   return (
-    <h2>Hello World</h2>
+    isSignedIn()
+      ? <h2>Home Page</h2>
+      : <Navigate to="/" />
   );
 }
-
-export default App;
