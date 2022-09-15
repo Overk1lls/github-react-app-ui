@@ -1,4 +1,6 @@
-import { Nullable } from "./types";
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
+import { Nullable } from './types';
 
 export interface Config {
   githubClientId: string;
@@ -7,7 +9,7 @@ export interface Config {
   redirectUrl: string;
 }
 
-let config: Readonly<Nullable<Config>>;
+let config: Readonly<Nullable<Config>> = null;
 
 export function getConfig() {
   if (!config) {
@@ -29,4 +31,4 @@ export function getConfig() {
     };
   }
   return config;
-};
+}

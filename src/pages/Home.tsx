@@ -1,37 +1,52 @@
-import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
-import { isSignedIn } from "../app/auth";
-import { useLazyGetCurrentUserQuery } from "../features/user/userAPI";
-import { User } from "../models/user";
-import Navbar from "../components/Navbar";
-import RepositoryList from "../components/RepositoryList";
-import CommitsTable from "../components/CommitsTable";
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { isSignedIn } from '../app/auth';
+import Box from '@mui/material/Box';
+import Navbar from '../components/Navbar';
+import RepositoryList from '../components/RepositoryList';
+import CommitsTable from '../components/CommitsTable';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
 
 export default function HomePage() {
-  const [user, setUser] = useState<User>();
   const [org, setOrg] = useState('');
-  const [repo, setRepo] = useState('');
-  const [triggerUserQuery] = useLazyGetCurrentUserQuery({ refetchOnReconnect: true });
 
-  useEffect(() => {
-    triggerUserQuery(undefined, true)
-      .then(({ data }) => setUser(data))
-      .catch(console.error);
-  }, [triggerUserQuery]);
+  if (!isSignedIn()) {
+    <Navigate to="/" />;
+  }
+
+  const handleOrgInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOrg(e.target.value);
+  };
 
   return (
-    isSignedIn()
-      ? <>
-        {user && <Navbar user={user} />}
+    <Container>
+      <Navbar />
 
-        <RepositoryList
-          setRepoName={setRepo}
-          setOrgName={setOrg}
+      <Box
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '25ch' },
+          m: '2rem',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <TextField
+          id="outlined-basic"
+          label="Organization"
+          variant="outlined"
+          color="primary"
+          sx={{ my: 2 }}
+          value={org}
+          onChange={handleOrgInput}
         />
+        <RepositoryList org={org} />
+      </Box>
 
-        <CommitsTable org={org} repo={repo} />
-      </>
-      : <Navigate to="/" />
+      <CommitsTable org={org} />
+    </Container>
   );
 }
-

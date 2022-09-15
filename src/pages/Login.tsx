@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { setAccessToken } from "../app/auth";
-import { getConfig } from "../app/config";
-import { LocalStorageKeys } from "../app/const";
-import { useLazyGetAccessTokenByCodeQuery } from "../features/auth/authAPI";
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { setAccessToken } from '../app/auth';
+import { getConfig } from '../app/config';
+import { LocalStorageKeys } from '../app/const';
+import { useLazyGetAccessTokenByCodeQuery } from '../features/auth/authAPI';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -53,6 +55,7 @@ export default function Login() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+
       <Box
         sx={{
           marginTop: 8,
@@ -67,7 +70,7 @@ export default function Login() {
           </Alert>
         )}
 
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
 
@@ -77,12 +80,12 @@ export default function Login() {
 
         <Box component="form" noValidate>
           <Button
+            fullWidth
             href={`https://github.com/login/oauth/authorize?scope=user&client_id=${githubClientId}&redirect_uri=${redirectUrl}`}
             type="submit"
-            fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
-            color="secondary"
+            color="primary"
             startIcon={<GitHubIcon />}
           >
             Github

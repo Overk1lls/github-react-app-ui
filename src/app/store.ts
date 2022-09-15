@@ -4,9 +4,13 @@ import { branchesApi } from '../features/branch/branchAPI';
 import { commitsApi } from '../features/commits/commitsAPI';
 import { repositoriesApi } from '../features/repositories/repositoriesAPI';
 import { userApi } from '../features/user/userAPI';
+import organizationReducer from '../features/organization/organizationSlice';
+import repositoryReducer from '../features/repositories/repositorySlice';
 
 export const store = configureStore({
   reducer: {
+    orgReducer: organizationReducer,
+    repoReducer: repositoryReducer,
     [branchesApi.reducerPath]: branchesApi.reducer,
     [repositoriesApi.reducerPath]: repositoriesApi.reducer,
     [commitsApi.reducerPath]: commitsApi.reducer,

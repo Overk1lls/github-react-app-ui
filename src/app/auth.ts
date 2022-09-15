@@ -1,7 +1,7 @@
-import { AxiosInstance } from "axios";
-import { isExpiredTokenResponse } from "./axios";
-import { LocalStorageKeys } from "./const";
-import { ErrorCode, LogicError } from "./errors";
+import { AxiosInstance } from 'axios';
+import { isExpiredTokenResponse } from './axios';
+import { LocalStorageKeys } from './const';
+import { ErrorCode, LogicError } from './errors';
 
 export interface AccessTokenResponse {
   accessToken: {
@@ -15,7 +15,10 @@ export function setAccessToken(token: string) {
   localStorage.setItem(LocalStorageKeys.AccessToken, token);
 }
 
-// TODO: redirect to the login page
+export function setCode(code: string) {
+  localStorage.setItem(LocalStorageKeys.Code, code);
+}
+
 export function signOut() {
   localStorage.removeItem(LocalStorageKeys.AccessToken);
   localStorage.removeItem(LocalStorageKeys.Code);
@@ -28,7 +31,7 @@ export function isSignedIn() {
 export async function refreshAccessToken(client: AxiosInstance) {
   try {
     const { data } = await client.post<AccessTokenResponse>('/auth', { code: getAuthCode() });
-    localStorage.setItem(LocalStorageKeys.AccessToken, data.accessToken.access_token);
+    setAccessToken(data.accessToken.access_token);
   } catch (error) {
     if (isExpiredTokenResponse(error)) {
       signOut();

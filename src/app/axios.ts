@@ -1,6 +1,6 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
-import { getAccessToken, refreshAccessToken } from "./auth";
-import { ServerErrorCode } from "./errors";
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
+import { getAccessToken, refreshAccessToken } from './auth';
+import { ServerErrorCode } from './errors';
 
 export interface AxiosClient {
   protectedClient: AxiosInstance;
@@ -19,21 +19,25 @@ export function createAxiosClient(baseUrl: string): AxiosClient {
       req.headers = {};
     }
     req.headers.Authorization = 'Bearer ' + getAccessToken();
+    return req;
   });
 
-  protectedClient.interceptors.response.use((res) => res, async (error) => {
-    if (isExpiredTokenResponse(error)) {
-      await refreshAccessToken(publicClient);
-      return protectedClient.request(error.config);
+  protectedClient.interceptors.response.use(
+    (res) => res,
+    async (error) => {
+      if (isExpiredTokenResponse(error)) {
+        await refreshAccessToken(publicClient);
+        return protectedClient.request(error.config);
+      }
+      throw error;
     }
-    throw error;
-  });
+  );
 
   return {
     protectedClient,
-    publicClient
+    publicClient,
   };
-};
+}
 
 export function isExpiredTokenResponse(error: unknown): error is AxiosError {
   return (
