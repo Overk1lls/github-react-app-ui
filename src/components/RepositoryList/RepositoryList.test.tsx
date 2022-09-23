@@ -1,8 +1,8 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { setAccessToken } from '../app/auth';
-import { store } from '../app/store';
+import { setAccessToken } from '../../app/auth';
+import { store } from '../../app/store';
 import RepositoryList from './RepositoryList';
 
 describe('RepositoryList component', () => {

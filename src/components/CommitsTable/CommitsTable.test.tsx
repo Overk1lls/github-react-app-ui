@@ -1,8 +1,8 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from '../app/store';
-import { mockCommits } from '../test';
+import { store } from '../../app/store';
+import { mockCommits } from '../../test';
 import CommitsTable, { mapCommits } from './CommitsTable';
 
 describe('CommitsTable component', () => {

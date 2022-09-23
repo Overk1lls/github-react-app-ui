@@ -3,7 +3,7 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 import { useEffect } from 'react';
 import { Optional } from '../app/types';
 import { useLazyGetRepositoryCommitsQuery } from '../features/commits/commitsAPI';
-import { Commit } from '../models/commits';
+import { Commit } from '../models/commit';
 
 type CommitsHookReturnType = [
   Optional<Commit[]>,

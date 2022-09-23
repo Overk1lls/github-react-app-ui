@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { User } from '../models/user';
-import { signOut } from '../app/auth';
+import { User } from '../../models/user';
+import { signOut } from '../../app/auth';
 import { useNavigate } from 'react-router-dom';
-import { useGetCurrentUserQuery } from '../features/user/userAPI';
+import { useGetCurrentUserQuery } from '../../features/user/userAPI';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';

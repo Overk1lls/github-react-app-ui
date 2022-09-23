@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { getAccessToken } from '../../app/auth';
 import { getConfig } from '../../app/config';
-import { Commit } from '../../models/commits';
+import { Commit } from '../../models/commit';
 import { GithubData } from '../../models/github-data';
 
 const { baseUrl } = getConfig();

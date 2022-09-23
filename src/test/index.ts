@@ -1,6 +1,6 @@
 import { AxiosError, AxiosResponse } from 'axios';
 import { ServerErrorCode } from '../app/errors';
-import { Commit } from '../models/commits';
+import { Commit } from '../models/commit';
 import { Repository } from '../models/repository';
 import { User } from '../models/user';
 

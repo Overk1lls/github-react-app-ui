@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { useRepositories } from '../hooks/useRepositories';
-import { addRepositoryName } from '../features/repositories/repositorySlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useRepositories } from '../../hooks/useRepositories';
+import { addRepositoryName } from '../../features/repositories/repositorySlice';
 import InputLabel from '@mui/material/InputLabel';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
