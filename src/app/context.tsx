@@ -1,5 +1,5 @@
-import { createContext, PropsWithChildren } from "react";
-import { AxiosClient } from "./axios";
+import { createContext, PropsWithChildren } from 'react';
+import { AxiosClient } from './axios';
 
 export interface AppContextValue {
   axios: AxiosClient;
@@ -12,9 +12,5 @@ export interface AppProviderProps {
 export const AppContext = createContext<AppContextValue | null>(null);
 
 export default function AppProvider({ axios, children }: PropsWithChildren<AppProviderProps>) {
-  return (
-    <AppContext.Provider value={{ axios }}>
-      {children}
-    </AppContext.Provider>
-  );
+  return <AppContext.Provider value={{ axios }}>{children}</AppContext.Provider>;
 }

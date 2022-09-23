@@ -1,9 +1,9 @@
-import { SerializedError } from "@reduxjs/toolkit";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
-import { useEffect } from "react";
-import { Optional } from "../app/types";
-import { useLazyGetRepositoryCommitsQuery } from "../features/commits/commitsAPI";
-import { Commit } from "../models/commits";
+import { SerializedError } from '@reduxjs/toolkit';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+import { useEffect } from 'react';
+import { Optional } from '../app/types';
+import { useLazyGetRepositoryCommitsQuery } from '../features/commits/commitsAPI';
+import { Commit } from '../models/commits';
 
 type CommitsHookReturnType = [
   Optional<Commit[]>,

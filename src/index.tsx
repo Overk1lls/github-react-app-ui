@@ -12,6 +12,7 @@ import { getConfig } from './app/config';
 
 import './index.css';
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 const theme = createTheme();
@@ -19,14 +20,14 @@ const { baseUrl } = getConfig();
 
 root.render(
   // <React.StrictMode>
-    <Provider store={store}>
-      <AppProvider axios={createAxiosClient(baseUrl)}>
-        <ThemeProvider theme={theme}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </ThemeProvider>
-      </AppProvider>
-    </Provider>
+  <Provider store={store}>
+    <AppProvider axios={createAxiosClient(baseUrl)}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    </AppProvider>
+  </Provider>
   // </React.StrictMode>
 );

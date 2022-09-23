@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { isSignedIn } from '../app/auth';
+import { isSignedIn } from '../../app/auth';
 import Box from '@mui/material/Box';
-import Navbar from '../components/Navbar';
-import RepositoryList from '../components/RepositoryList';
-import CommitsTable from '../components/CommitsTable';
+import Navbar from '../../components/Navbar';
+import RepositoryList from '../../components/RepositoryList';
+import CommitsTable from '../../components/CommitsTable';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 

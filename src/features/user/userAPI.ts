@@ -1,7 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getAccessToken } from "../../app/auth";
-import { getConfig } from "../../app/config";
-import { User } from "../../models/user";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { getAccessToken } from '../../app/auth';
+import { getConfig } from '../../app/config';
+import { User } from '../../models/user';
 
 const { baseUrl } = getConfig();
 

@@ -17,7 +17,7 @@ import Link from '@mui/material/Link';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const infoToDisplay: Array<keyof User> = ['email', 'name'];
+export const infoToDisplay: Array<keyof User> = ['email', 'name'];
 
 export default function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
