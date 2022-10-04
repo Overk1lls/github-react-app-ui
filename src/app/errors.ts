@@ -1,4 +1,5 @@
 import { SerializedError } from '@reduxjs/toolkit';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 
 export enum ErrorCode {
   NotSignedIn = 'signIn.no',
@@ -24,4 +25,8 @@ export class LogicError extends Error {
 
 export function isSerializedError(error: any): error is SerializedError {
   return 'code' in error && 'message' in error;
+}
+
+export function isFetchBaseQueryError(error: any): error is FetchBaseQueryError {
+  return 'data' in error && 'status' in error;
 }

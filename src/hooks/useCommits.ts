@@ -21,7 +21,9 @@ export function useCommits(owner: string, repo: string): CommitsHookReturnType {
 
   useEffect(() => {
     const searchForRepos = setTimeout(async () => {
-      await trigger({ owner, repo }, true);
+      if (owner && repo) {
+        await trigger({ owner, repo }, true);
+      }
     }, 1500);
 
     return () => {
