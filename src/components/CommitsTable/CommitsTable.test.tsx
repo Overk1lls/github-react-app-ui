@@ -1,12 +1,21 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { act, cleanup, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { store } from '../../app/store';
 import { mockCommits } from '../../test';
 import CommitsTable, { mapCommits } from './CommitsTable';
+import { setAccessToken } from '../../app/auth';
+import { addRepositoryName } from '../../features/repositories/repositorySlice';
 
 describe('CommitsTable component', () => {
   test('should handle loading without data', async () => {
+    jest.useFakeTimers();
+
+    setAccessToken('token');
+    act(() => {
+      store.dispatch(addRepositoryName('test'));
+    });
+
     render(
       <Provider store={store}>
         <BrowserRouter>
@@ -14,8 +23,14 @@ describe('CommitsTable component', () => {
         </BrowserRouter>
       </Provider>
     );
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
     expect(screen.getByRole('grid')).toBeInTheDocument();
 
+    jest.useRealTimers();
     cleanup();
   });
 
@@ -25,7 +40,7 @@ describe('CommitsTable component', () => {
     expect(result).toEqual(
       expect.arrayContaining([
         {
-          id: 0,
+          id: mockCommits[0].sha,
           author: mockCommits[0].commit.author.name,
           committer: mockCommits[0].commit.committer.name,
           message: mockCommits[0].commit.message,

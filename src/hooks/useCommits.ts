@@ -24,7 +24,7 @@ export function useCommits(owner: string, repo: string): CommitsHookReturnType {
       if (owner && repo) {
         await trigger({ owner, repo }, true);
       }
-    }, 1500);
+    }, 500);
 
     return () => {
       clearTimeout(searchForRepos);

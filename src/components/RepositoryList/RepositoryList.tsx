@@ -18,7 +18,7 @@ const RepositoryList: FC<RepositoryListProps> = ({ org }) => {
   const repo = useAppSelector((state) => state.repoReducer.name);
 
   const handleSelectChange = (e: SelectChangeEvent<string>) => {
-    dispatch(addRepositoryName(e.target.value as string));
+    dispatch(addRepositoryName(e.target.value));
   };
 
   return (

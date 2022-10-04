@@ -68,3 +68,5 @@ export const mockError = new AxiosError(
     },
   } as AxiosResponse
 );
+
+export const mockAccessToken = 'test token';

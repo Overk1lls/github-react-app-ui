@@ -12,7 +12,7 @@ export default function HomePage() {
   const [org, setOrg] = useState('');
 
   if (!isSignedIn()) {
-    <Navigate to="/" />;
+    return <Navigate to="/" />;
   }
 
   const handleOrgInput = (e: React.ChangeEvent<HTMLInputElement>) => {

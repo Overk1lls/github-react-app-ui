@@ -24,10 +24,7 @@ export function useAuth(): HookReturnType {
     const code = searchParams.get('code');
 
     if (code) {
-      (async () => {
-        const { data } = await trigger(code);
-        setAccessToken(data?.accessToken.access_token ?? '');
-      })();
+      trigger(code).then(({ data }) => setAccessToken(data?.accessToken.access_token ?? ''));
     }
     if (isSignedIn()) {
       navigate(RouteName.Home);

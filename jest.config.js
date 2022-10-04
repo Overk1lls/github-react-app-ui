@@ -9,7 +9,9 @@ const config = {
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   coveragePathIgnorePatterns: ['<rootDir>/src/index.tsx'],
   testRegex: 'src/.*\\.test\\.tsx?$',
+  testMatch: ['<rootDir>/src/**/*.test.tsx?$', '<rootDir>/src/test/**/*.test.tsx?$'],
   setupFiles: ['<rootDir>/src/setupTests.ts'],
+  testResultsProcessor: 'jest-sonar-reporter',
 };
 
 module.exports = config;

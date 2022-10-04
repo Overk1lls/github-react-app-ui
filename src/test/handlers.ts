@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 import { getConfig } from '../app/config';
-import { mockCommits, mockError, mockRepositories, mockUser } from '.';
+import { mockAccessToken, mockCommits, mockError, mockRepositories, mockUser } from '.';
 import { ServerErrorCode } from '../app/errors';
 import { AccessTokenResponse } from '../app/auth';
 
@@ -35,7 +35,7 @@ export const handlers = [
     return res(
       ctx.json({
         accessToken: {
-          access_token: 'test token',
+          access_token: mockAccessToken,
         },
       } as AccessTokenResponse)
     );
