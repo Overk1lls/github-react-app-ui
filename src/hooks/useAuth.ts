@@ -11,7 +11,7 @@ type HookReturnType = [
   Optional<AccessTokenResponse>,
   boolean,
   boolean,
-  Optional<FetchBaseQueryError | SerializedError>
+  Optional<FetchBaseQueryError | SerializedError | TypeError>
 ];
 
 export function useAuth(): HookReturnType {

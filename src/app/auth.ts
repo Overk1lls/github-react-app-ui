@@ -25,7 +25,7 @@ export function signOut() {
 }
 
 export function isSignedIn() {
-  return !!localStorage.getItem(LocalStorageKeys.AccessToken);
+  return !!localStorage.getItem(LocalStorageKeys.AccessToken)?.trim();
 }
 
 export async function refreshAccessToken(client: AxiosInstance) {

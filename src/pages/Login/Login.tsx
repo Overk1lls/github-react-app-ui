@@ -1,4 +1,5 @@
 import { getConfig } from '../../app/config';
+import { useAuth } from '../../hooks/useAuth';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -10,7 +11,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import Alert from '@mui/material/Alert';
 import { useAuth } from '../../hooks/useAuth';
 
-const { redirectUrl, githubClientId } = getConfig();
+const { githubClientId } = getConfig();
 
 export default function Login() {
   const [, isLoading, , error] = useAuth();
@@ -50,7 +51,7 @@ export default function Login() {
         <Box component="form" noValidate>
           <Button
             fullWidth
-            href={`https://github.com/login/oauth/authorize?scope=user&client_id=${githubClientId}&redirect_uri=${redirectUrl}`}
+            href={`https://github.com/login/oauth/authorize?scope=user&client_id=${githubClientId}`}
             type="submit"
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
