@@ -3,6 +3,7 @@ import { User } from '../../models/user';
 import { signOut } from '../../app/auth';
 import { useNavigate } from 'react-router-dom';
 import { useGetCurrentUserQuery } from '../../features/user/userAPI';
+import { START_PAGE } from '../AppRouter';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -26,7 +27,7 @@ export default function Navbar() {
 
   const handleUserSignOut = () => {
     signOut();
-    navigate('/');
+    navigate(START_PAGE);
   };
 
   return (

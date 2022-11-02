@@ -2,7 +2,7 @@ import { useLazyGetAccessTokenByCodeQuery } from '../features/auth/authAPI';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AccessTokenResponse, isSignedIn, setAccessToken } from '../app/auth';
-import { RouteName } from '../components/AppRouter';
+import { START_PAGE } from '../components/AppRouter';
 import type { SerializedError } from '@reduxjs/toolkit';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 import type { Optional } from '../app/types';
@@ -24,10 +24,13 @@ export function useAuth(): HookReturnType {
     const code = searchParams.get('code');
 
     if (code) {
-      trigger(code).then(({ data }) => setAccessToken(data?.accessToken.access_token ?? ''));
-    }
-    if (isSignedIn()) {
-      navigate(RouteName.Home);
+      trigger(code)
+        .then(({ data }) => setAccessToken(data?.accessToken.access_token ?? ''))
+        .then(() => {
+          if (isSignedIn()) {
+            navigate(START_PAGE + '/home');
+          }
+        });
     }
   }, [search, pathname, trigger, navigate]);
 

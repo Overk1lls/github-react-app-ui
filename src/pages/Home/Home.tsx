@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { isSignedIn } from '../../app/auth';
+import { START_PAGE } from '../../components/AppRouter';
 import Box from '@mui/material/Box';
 import Navbar from '../../components/Navbar/Navbar';
 import RepositoryList from '../../components/RepositoryList/RepositoryList';
@@ -12,7 +13,7 @@ export default function HomePage() {
   const [org, setOrg] = useState('');
 
   if (!isSignedIn()) {
-    return <Navigate to="/" />;
+    return <Navigate to={START_PAGE} />;
   }
 
   const handleOrgInput = (e: React.ChangeEvent<HTMLInputElement>) => {
