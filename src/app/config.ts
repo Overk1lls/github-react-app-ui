@@ -32,3 +32,7 @@ export function getConfig() {
   }
   return config;
 }
+
+export function isNotProduction() {
+  return !!process.env.DEBUG || !process.env.NODE_ENV || process.env.NODE_ENV !== 'production';
+}

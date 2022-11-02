@@ -28,5 +28,5 @@ export function isSerializedError(error: any): error is SerializedError {
 }
 
 export function isFetchBaseQueryError(error: any): error is FetchBaseQueryError {
-  return 'data' in error && 'status' in error;
+  return 'data' in error && 'status' in error && typeof error.data === 'object';
 }

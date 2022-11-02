@@ -1,4 +1,5 @@
-import { getConfig } from '../../app/config';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+import { getConfig, isNotProduction } from '../../app/config';
 import { useAuth } from '../../hooks/useAuth';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,7 +10,6 @@ import Button from '@mui/material/Button';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Alert from '@mui/material/Alert';
-import { useAuth } from '../../hooks/useAuth';
 
 const { githubClientId } = getConfig();
 
@@ -30,7 +30,9 @@ export default function Login() {
       >
         {error && (
           <Alert severity="error" sx={{ m: 3 }}>
-            {JSON.stringify(error)}
+            {isNotProduction()
+              ? JSON.stringify(error)
+              : ((error as FetchBaseQueryError)?.data as Record<string, any>)?.message}
           </Alert>
         )}
 
